@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout/componentes :: Fhead"></head>
+<body>
+  <header th:replace="layout/componentes :: Fheader"></header>
+  <link rel="stylesheet" th:href="@{/css/estilo_carrito.css}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+  <!--Efecto de oscurecer pantalla (Móvil)-->
+  <div class="oscurecer" id="oscuro"></div>
+
+  <!-- /////////////CUERPO DE LA PÁGINA////////////////// -->
+
+  <!--CUERPO DE LA PÁGINA-->
+        <!--Título de la página-->
+        <div class="contenedor-titulo-menu m-auto">
+            <h1 id="titulo-menu">
+                <img th:src="@{/img/rayo-flash.png}" alt="RayoFlash" />
+                Realizar un Pedido
+                <img th:src="@{/img/rayo-flash.png}" alt="RayoFlash" />
+            </h1>
+        </div>
+
+        <!--Formulario de Productos-->
+        <div class="contenedor-select-producto">
+            <form id="formulario-pedido-id">
+                <h1 id="titulo-rpedido">Seleccione su producto</h1>
+                <select class="form-control mb-4" id="select-categoria" name="select-categoria" aria-describedby="emailHelp" placeholder="Categoría">
+                    <option value="">Seleccione una categoría</option>
+                    <option th:each="item : ${listaCategorias}" 
+                                                    th:value="${item.id}"
+                                                    th:text="${item.nombre}"></option>
+                </select>
+                <div id="mensaje-error-select-categoria" class="m-0 form-group"></div>
+                <select class="form-control mb-4" id="select-producto" name="select-producto" aria-describedby="emailHelp" placeholder="Producto">
+                    <option value="">Seleccione un producto</option>
+                </select>
+                <div id="mensaje-error-select-producto" class="form-group"></div>
+                <input class="mb-4" type="number" id="cantidad-productos" placeholder="Cantidad del producto" required />
+                <div id="mensaje-error-cantidad-productos" class="form-group"></div>
+                <button type="button" id="btn-agregar-carrito">Agregar al carrito</button>
+                <small class="text-muted m-2">Usted tiene un máximo de 8 productos por pedido</small>
+            </form>
+
+            <div class="imagen-producto centrar">
+                <img th:src="@{/img/Bee_Burger.jpg}" id="imagen_producto" alt="Imagen de Producto" />
+            </div>
+        </div>
+
+        <!--Tabla - Carrito-->
+        <table class="carrito" id="tabla-carrito">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>SubTotal</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Total: S/ <span id="totalTabla"></span></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <!--Botón realizar Pedido-->
+        <div class="centrar boton botonc">
+            <button id="btnRealizarPedido">
+                Realizar Pedido
+            </button>
+        </div>
+
+        <!--Modal - Método de pago-->
+        <div class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title subtitulo" id="exampleModalLabel">
+                            Seleccionar método de pago:
+                        </h5>
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!--CUERPO DEL MODAL-->
+
+                        <div class="form-group">
+                            <label>Dirección</label>
+                            <input class="form-control mb-2" id="direccion" name="direccion" placeholder="Dirección de destino"/>
+                            <div id="mensaje-error-direccion" class="form-group"></div>
+                            <label>Método de pago</label>
+                            <select class="form-control mb-2" id="select-mpago" name="select-mpago" aria-describedby="emailHelp" placeholder="Método de pago">
+                                <option value="">Seleccionar método de pago</option>
+                                <option th:each="item : ${listaMetodoPago}" th:value="${item.id}" th:text="${item.forma_pago}"></option>
+                            </select>
+                        </div>
+
+
+                        <div class="formulario-metpago" id="pagoOnline">
+                            <h4 class="mb-3 subtitulo">Pago</h4>
+                            <div class="row gy-3">
+                                <div class="col-md-6">
+                                    <label for="cc-name" class="form-label">Nombre en la tarjeta</label>
+                                    <input type="text"
+                                        class="form-control"
+                                        id="cc-name"
+                                        placeholder
+                                        required />
+                                    <small class="text-muted">Nombre completo como se muestra en la tarjeta</small>
+                                    <div class="invalid-feedback">
+                                        Se requiere el nombre en la tarjeta
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="cc-number" class="form-label">Número de tarjeta de crédito</label>
+                                    <input type="number"
+                                        class="form-control"
+                                        id="cc-number"
+                                        placeholder
+                                        required />
+                                    <div class="invalid-feedback">
+                                        Se requiere número de tarjeta de crédito
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="cc-expiration" class="form-label">Vencimiento</label>
+                                    <input type="text"
+                                        class="form-control"
+                                        id="cc-expiration"
+                                        placeholder
+                                        required />
+                                    <div class="invalid-feedback">
+                                        Fecha de vencimiento requerida
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="cc-cvv" class="form-label">CVV</label>
+                                    <input type="text"
+                                        class="form-control"
+                                        id="cc-cvv"
+                                        placeholder
+                                        required />
+                                    <div class="invalid-feedback">
+                                        Código de seguridad requerido
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal">
+                            Cerrar
+                        </button>
+                        <button type="button" class="btn btn-primary" id="btn-realizar-pedido">
+                            Realizar compra
+                        </button>
+                        <button type="button" class="btn btn-primary" id="btn-realizar-pedido-tarjeta">
+                            Realizar compra
+                        </button>
+                        <button type="button" class="btn btn-primary" id="btn-realizar-pedido-indefinido">
+                            Realizar compra
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+  <!-- //////////////FIN DEL CUERPO DE LA PÁGINA//////////////// -->
+
+  <footer th:replace="layout/componentes :: Ffooter"></footer>
+  <div th:replace="layout/componentes :: Fscripts"></div>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script th:src="@{/js/script-pedido.js}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
+
+
+
+
+
+
+<!-- 
+     -->

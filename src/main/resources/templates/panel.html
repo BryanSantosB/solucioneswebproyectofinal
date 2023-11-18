@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="layout/index :: Fhead"></head>
+<body id="page-top">
+    <div id="wrapper">
+        <ul th:replace="layout/index :: FSidebar"></ul>
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <nav th:replace="layout/index :: FTopBar"></nav>
+                <!-- Begin Page Content (MAIN) -->
+                <div class="container-fluid">
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Página Principal</h1>
+                    </div>
+                </div>
+            </div>
+            <footer th:replace="layout/index :: FFooter">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2023</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <div th:replace="layout/index :: FScript"></div>
+</body>
+</html>

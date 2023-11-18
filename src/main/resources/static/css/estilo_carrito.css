@@ -1,0 +1,151 @@
+.contenedor-select-producto{
+    border-radius: 10px;
+    border: 1px solid white;
+    padding: 20px;
+    width: 60%;
+    margin: auto;
+    margin-top: 40px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row nowrap;
+    gap: 30px;
+    height: auto;
+    /*max-height: 340px;*/
+}
+
+.contenedor-select-producto form{
+    width: 60%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-select-producto .imagen-producto{
+    width: 40%;
+    max-height: 300px;
+    height: auto;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.imagen-producto img{
+    border: 1px solid white;
+    width: 100%;
+    max-width: 300px;
+    z-index: 90;
+}
+
+#titulo-rpedido{
+    font-size: 20px;
+    font-weight: bolder;
+    color: white;
+}
+
+.contenedor-select-producto select,
+.contenedor-select-producto input{
+    height: 35px;
+    border-radius: 6px;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    font-weight: 900;
+    padding-left: 10px;
+    width: 100%;
+    /*margin-bottom: 20px;*/
+}
+
+.contenedor-select-producto button{           
+    background-color: rgba(186, 13, 35);
+    border-radius: 10px;
+    border: none;
+    width: 200px;
+    height: 35px;
+    color: white;
+    font-weight: 900;
+}
+
+.contenedor-select-producto button:hover{           
+    background-color: #E7DA2D;
+    color: black;
+}
+
+.fila{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.carrito{
+    width: 60%;
+    margin: 40px auto;
+    color: white;
+    font-weight: bold;
+}
+
+.carrito th{
+    border-bottom: 2px solid white;
+}
+
+.carrito td{
+    height: 35px;
+}
+
+.contenedor-titulo-menu h1{
+    text-align: center;
+}
+
+.botonc button {
+    background-color: rgba(186, 13, 35);
+    border: none;
+    font-weight: bolder !important;
+    width: 40% !important;
+}
+
+.formulario-metpago{
+    color: black !important;
+    font-weight: bolder !important;
+}
+
+.subtitulo{
+    color: black !important;
+    font-weight: bolder !important;
+}
+
+#pagoOnline{
+    display: none;
+}
+
+@media screen and (max-width : 767px) {
+    .contenedor-select-producto{
+        flex-direction: column;
+        align-items: center;
+        max-height: none;
+        width: 80%;
+    }
+
+    .contenedor-select-producto form{
+        width: 90%;
+    }
+
+    .contenedor-select-producto select,
+    .contenedor-select-producto input{
+        width: 100%;
+        /*margin-bottom: 30px;*/
+    }
+
+    .imagen-producto{
+        width: 90% !important;
+    }
+
+    .imagen-producto img{
+        width: 100%;
+    }
+
+    .carrito{
+        width: 90%;
+    }
+    
+}

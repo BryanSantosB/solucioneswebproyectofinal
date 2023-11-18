@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:fragment="Fhead">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9}" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Epilogue:wght@100&family=Kanit:ital,wght@1,200&display=swap" rel="stylesheet">
+    <link rel="icon" th:href="@{/img/logo.png}" type="image/png">
+    <title>Inicio</title>
+</head>
+<body>
+    
+
+    <!--NavBar-->
+    <header th:fragment="Fheader">
+        <nav class="contenedor-nav">
+            
+            <!--Logo-->
+            <div class="contenedor-logo">
+                <a class="logo">
+                    <img th:src="@{/img/logo.png}" alt="LogoFlash">
+                </a>
+            </div>
+
+            <!--Contenedor de logo y enlaces-->
+            <div class="contenedor-enlaces" id="contenedor-en">
+                <!--X para cerrar-->
+                <div class="cerrar">
+                    <a class="logo ancho-log-mv">
+                        <img th:src="@{/img/logo.png}" alt="LogoFlash">
+                    </a>
+                    <label for="check-res">
+                        <i>
+                            <svg width="26" height="26" xmlns="http://www.w3.org/2000/svg"><g fill="white" fill-rule="evenodd"><path d="m2.393.98 22.628 22.628-1.414 1.414L.979 2.395z"/><path d="M.98 23.607 23.609.979l1.414 1.414L2.395 25.021z"/></g></svg>
+                        </i>
+                    </label>
+                </div>
+                <!--Enlaces-->
+                <ul class="lista-enlaces">
+                    <li><a th:href="@{/inicio/}">Inicio</a></li>
+                    <li><a th:href="@{/realizarpedido/}">Realizar Pedido</a></li>
+                    <li>
+                        <label for="check-1">
+                            <span>Gestión</span>
+                            <i id="i-1-1">
+                                <svg width="10" height="6" xmlns="http://www.w3.org/2000/svg"><path stroke="#686868" stroke-width="1.5" fill="none" d="m1 1 4 4 4-4"/></svg>
+                            </i>
+                            <i id="i-2-1">
+                                <svg width="10" height="6" xmlns="http://www.w3.org/2000/svg"><path stroke="#686868" stroke-width="1.5" fill="none" d="m1 5 4-4 4 4"/></svg>
+                            </i>
+                        </label>
+                        <input type="checkbox" id="check-1" class="select-check">
+                        <div id="caja1" class="caja-select">
+                            <div class="opcion">
+                                <i class="fa-brands fa-codepen"></i>
+                                <a th:href="@{/categorias/}">Categorías</a>
+                            </div>
+                            <div class="opcion">
+                                <i class="fa-brands fa-product-hunt"></i>
+                                <a th:href="@{/productos/}">Productos</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="check-2">
+                            <span>Información</span>
+                            <i id="i-1-2">
+                                <svg width="10" height="6" xmlns="http://www.w3.org/2000/svg"><path stroke="#686868" stroke-width="1.5" fill="none" d="m1 1 4 4 4-4"/></svg>
+                            </i>
+                            <i id="i-2-2">
+                                <svg width="10" height="6" xmlns="http://www.w3.org/2000/svg"><path stroke="#686868" stroke-width="1.5" fill="none" d="m1 5 4-4 4 4"/></svg>
+                            </i>
+                        </label>
+                            
+                        <input type="checkbox" id="check-2" class="select-check">
+                        <div id="caja2" class="caja-select">
+                            <a href="">Nosotros</a>
+                            <a href="">Contacto</a>
+                            <a href="">Acerca de</a>
+                        </div>
+                    </li>
+                </ul>
+
+                <!--Login y Register-->
+                <div class="log-Reg">
+                    <a href=""><i class="fa-solid fa-user"></i>   Login</a>
+                    <a id="btn-register" href="">Register</a>
+                </div>
+            </div>
+            <div class="check-responsive">
+                <label for="check-res">
+                    <i>
+                        <svg width="32" height="18" xmlns="http://www.w3.org/2000/svg"><g fill="#FFF" fill-rule="evenodd"><path d="M0 0h32v2H0zM0 8h32v2H0zM0 16h32v2H0z"/></g></svg></i>
+                </label>
+                <input type="checkbox" id="check-res">
+            </div>
+        </nav>
+    </header>
+
+    <!--Efecto de oscurecer pantalla (Móvil)-->
+    <div class="oscurecer" id="oscuro"></div>
+
+    <!-- /////////////CUERPO DE LA PÁGINA////////////////// -->
+
+    
+    
+    <!-- //////////////FIN DEL CUERPO DE LA PÁGINA//////////////// -->
+
+    <!--Footer-->
+    <footer th:fragment="Ffooter" class="pie-pagina">
+
+      <div class="footer-enlaces">
+        <input type="checkbox" id="ft-1">
+        <label for="ft-1" class="ft-titulo"><i class="fa-solid fa-circle-info"></i>ACERCA DE FLASH</label>
+        <ul id="ul-ft-1">
+          <li><a href="#">Nosotros</a></li>
+          <li><a href="#">Política de Privacidad</a></li>
+          <li><a href="#">Tratamiento de datos personales</a></li>
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Promociones y ofertas</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-enlaces">
+        <input type="checkbox" id="ft-2">
+        <label for="ft-2" class="ft-titulo"><i class="fa-solid fa-screwdriver-wrench"></i>SERVICIO AL CLIENTE</label>
+        <ul id="ul-ft-2">
+          <li><a href="#">Contáctenos</a></li>
+          <li><a href="#">Sugerencias</a></li>
+          <li><a href="#">Preguntas frecuentes</a></li>
+          <li><a href="#">Libro de reclamaciones</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-enlaces centrar columnas">
+        <input type="checkbox" id="ft-1">
+        <img th:src="@{/img/logo.png}" alt="LogoFlash">
+        <p class="ft-titulo">SÍGUENOS</p>
+        <div>
+          <a href="https://www.instagram.com/flash_food_peru/" target="_blank"><i class="fa-brands fa-instagram fa-2x"></i></a>
+          <a href="https://www.tiktok.com/@flashfoodof?_t=8e9M9zBx51y&_r=1" target="_blank"><i class="fa-brands fa-tiktok fa-2x"></i></a>
+        </div>
+      </div>
+
+      <div class="derechos centrar">
+        <p><i class="fa-regular fa-copyright"></i>TODOS LOS DERECHOS RESERVADOS</p>
+      </div>
+
+    </footer>
+
+    <div th:fragment="Fscripts">
+        <script src="https://kit.fontawesome.com/a7fc31cc6a.js" crossorigin="anonymous"></script>
+        <script th:src="@{/js/script-index.js}" type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+    </div>
+
+</body>
+</html>

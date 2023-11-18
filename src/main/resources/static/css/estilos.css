@@ -1,0 +1,688 @@
+/*Importamos la fuente*/
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Epilogue:wght@100&family=Kanit:ital,wght@1,200&display=swap');
+
+
+/*:::::::::::::::::::::::::::::::::::NAVBAR:::::::::::::::::::::::::::::::::::*/
+/*Damos estilo a todos los elementos. (relleno 0, margen 0, fuente, etc)*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Epilogue', sans-serif;
+    font-size: 16px;
+    font-weight: 900 !important;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+.centrar{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.columnas{
+    flex-direction: column;
+}
+
+/*Damos color al fondo*/
+body{
+    background-color: rgb(15, 15, 15) !important;
+    margin-bottom: 0 !important; 
+}
+
+.label{
+    display: inline-block;
+}
+
+p{
+    margin-bottom: 0 !important; 
+}
+
+header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/*Damos posicionamiento al contenedor del nav y sus elementos internnos*/
+.contenedor-nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 30px;
+    background-color: #0F0F0F;
+    color: hsl(0, 0%, 100%);
+}
+
+/*Damos ancho a ciertos elementos utilizando selectores*/
+.lista-enlaces li > label,
+.lista-enlaces li > a,
+.log-Reg a{
+    font-weight: bolder;
+}
+
+/*Brindamos estilos a hover de algunos elementos*/
+.contenedor-nav a,
+.contenedor-nav a:visited {
+    color: hsl(0, 0%, 60%);
+}
+
+.contenedor-nav a:hover{
+    color: white;
+}
+
+.contenedor-nav label{
+    width: auto;
+    display: inline-flex;
+}
+
+/*.contenedor-nav label:hover{
+    transform: scale(1.1);
+    transition: all .05s;
+}*/
+
+/*Estilos del boton register*/
+#btn-register{
+    padding: 5px 20px;
+    border: 1px solid hsl(0, 0%, 8%);
+    border-radius: 10px;
+}
+
+/*Centramos y damos espacioado al contenido de enlaces*/
+.contenedor-enlaces{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    gap: 40px;
+    flex-direction: row;
+}
+
+/*Centramos el contenido*/
+.contenedor-logo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 130px;
+}
+
+/*Centramos el contenido y damos espaciado*/
+.lista-enlaces{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    flex-direction: row;
+    margin-bottom: 0 !important;
+}
+
+/*Posición relativa*/
+.lista-enlaces li{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lista-enlaces label span{
+    margin-right: 5px;
+}
+
+/*Escondemos checks de selectores*/
+.select-check{
+    display: none;
+}
+
+/*Damos estilo al contenedor de las opciones de los selectores*/
+.caja-select{
+    position: absolute;
+    top: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px 10px rgba(0,0,0,.05);
+    display: none;
+    width: auto;
+    height: auto;
+    background-color: rgb(15, 15, 15);
+    padding: 10px 20px;
+}
+
+/*Selector para ancho, margen y display del elemento a*/
+.caja-select a{
+    display: block;
+    width: auto;
+    margin: 15px;
+    font-weight: 900;
+}
+
+.caja-select a:hover{
+    color: white;
+}
+
+/*Para que el posicionamiento inicie desde la derecha*/
+#caja1{
+    right: 0;
+}
+
+/*que inicie desde la izquierda */
+#caja2{
+    left: 0;
+}
+
+#caja3 {
+    left: -100px;
+}
+
+#caja4 {
+    left: -100px;
+}
+
+/*Ocultamos íconos de selectores*/
+#i-2-1{
+    display: none;
+}
+
+#i-2-2{
+    display: none;
+}
+
+#i-2-3 {
+    display: none;
+}
+
+#i-2-4 {
+    display: none;
+}
+
+/*Ocultamos el check del nav responsive*/
+#check-res{
+    display: none;
+}
+
+/*Contenedor de caja de selector*/
+.opcion{
+    text-align: center;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.opcion i{
+    color: white;
+    margin-right: 10px;
+}
+
+.opcion a{
+    /*color: black;*/
+    text-align: left;
+}
+
+/*Tamaño de imagen*/
+.logo img{
+    width: 20%;
+    min-width: 120px;
+}
+
+/*Centramos y separamos en contenido del div log-Reg*/
+.log-Reg{
+    display: block;
+    /*justify-content: flex-start;
+    align-items: center;*/
+    gap: 40px;
+}
+
+.log-Reg a:hover{
+    border-color: white !important;
+}
+
+.check-responsive {
+    display: none;
+}
+
+.check-responsive label i{
+    color: white !important;
+    font-size: 25px !important;
+}
+
+/*Creamos un div que ocupe toda la pantalla y le damos transición y un color oscuro, 
+lo ocultamos y solo se mostrará cuando el el check del nev se active para mostrar las 
+opciones del nav (móvil)*/
+.oscurecer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    transition: all 0.3;
+    z-index: 700; 
+}
+
+/*Ocultamos ícono de X*/
+.cerrar{
+    display: none;
+}
+
+.ancho-log-mv{
+    width: 40%;
+}
+
+/*:::::::::::::::::::::::::::::::::::Slider:::::::::::::::::::::::::::::::::::*/
+
+.slider{
+    height: calc(100vh - 70px);
+}
+
+.desktop{
+    display: block;
+}
+
+.movil{
+    display: none;
+}
+
+.carousel-item img{
+    width: 100%;
+}
+
+
+/*:::::::::::::::::::::::::::::::::::Enlaces:::::::::::::::::::::::::::::::::::*/
+/* Enlaces */
+div.enlaces{
+    width: 80%;
+    height: auto;
+    margin: 70px auto;
+    padding: 40px;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    border-top: 1px solid hsl(0, 0%, 60%);
+    border-bottom: 1px solid hsl(0, 0%, 60%);
+    gap: 40px;
+}
+
+div.enlaces a{
+    display: inline-block;
+    position: relative;
+    padding: 5px 15px;
+    margin: 20px;
+    border: 1px solid hsl(0, 0%, 60%);
+    border-radius: 10px;
+    font-size: 35px;
+    min-width: 120px !important;
+    height: 120px !important;
+    color: hsl(0, 0%, 60%);
+}
+
+div.enlaces a:hover{
+    /*box-shadow: 2px 2px 15px rgba(105, 105, 105,.3),
+                -2px -2px 15px rgba(105, 105, 105, .3);*/
+    box-shadow: 2px 2px 15px rgba(255, 255, 255, .5),
+                -2px -2px 15px rgba(255, 255, 255, .5);
+    color: white;
+}
+
+div.enlaces a p{
+    position: absolute;
+    bottom: -55px;
+    font-size: 25px;
+    color: hsl(0, 0%, 60%);
+    font-family: 'Bebas Neue', sans-serif;
+
+}
+
+div.enlaces a:hover p{
+    color: white;
+}
+
+
+/*:::::::::::::::::::::::::::::::::::MENÚ:TARJETAS:::::::::::::::::::::::::::::::::::*/
+
+#titulo-menu{
+    font-size: 40px;
+    margin-bottom: 30px;
+    font-weight: bolder;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 4px;
+    color: white;
+}
+
+.contenedor-titulo-menu img{
+    width: 30px;
+}
+
+div.contenedor-menu{
+    width: 90%;
+    margin: 30px auto;
+    border-radius: 20px;
+    text-align: center;
+}
+
+div.contenedor-menu-flex{
+    width: 80%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+div.menu-item{
+    padding: 0;
+    width: 260px;
+    margin: 15px;
+    border-radius: 25px;
+    overflow: hidden;
+    
+}
+
+div.menu-item img:hover{
+    transition: all .5s;
+    transform: scale(1.1);
+}
+
+div.menu-item p{
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    padding: 10px 0;
+    margin-bottom: 0;
+}
+
+div.img-menu-item{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+div.img-menu-item img{
+    width: 100%;
+    max-height: 300px;
+}
+
+div.descripcion-menu{
+    background-color: rgba(105, 105, 105, .1);
+}
+
+/* Botones */
+div.boton{
+    padding: 10px;
+    width: 100%;
+}
+
+div.boton button,
+div.boton a{
+    padding: 8px 8px;
+    border-radius: 15px;
+    background-color: #ba0d23;
+    color: white;
+    font-weight: 500;
+    border: 1px solid black;
+}
+
+
+/*:::::::::::::::::::::::::::::::::::FOOTER:::::::::::::::::::::::::::::::::::*/
+footer.pie-pagina{
+    width: 100%;
+    min-height: 40vh;
+    height: auto;
+    border-top: 1px solid hsl(0, 0%, 60%);
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: start;
+    padding: 20px 40px;
+    margin-top: 70px;
+}
+
+.footer-enlaces{
+    width: 25%;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.footer-enlaces ul{
+    padding-left: 0;
+}
+
+.footer-enlaces input{
+    display: none;
+}
+
+.ft-titulo{
+    color: white;
+    font-size: 18px;
+    font-weight: 900;
+    position: relative;
+}
+
+.ft-titulo i{
+    position: absolute;
+    top: 3.5px;
+    left: -20px;
+}
+
+.footer-enlaces a{
+    color: hsl(0, 0%, 60%);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.footer-enlaces img{
+    width: 140px;
+    margin-bottom: 10px;
+}
+
+.footer-enlaces a:hover{
+    color: white;
+    text-decoration: underline !important;
+    text-shadow: 2px 2px 10px hsl(0, 0%, 60%);
+}
+
+.contenedor-logo-footer{
+    position: absolute;
+    right: 60px;
+    bottom: 30px;
+    width: 140px;
+    text-align: center;
+}
+
+.derechos{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    height: 6vh;
+    color:white;
+}
+
+/*:::::::::::Boton Whatspp::::::::::*/
+.whatsapp-button {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 700;
+    transition: .5s;
+}
+.whatsapp-button a i{
+    font-size: 50px;
+}
+
+.whatsapp-button:hover{
+    transition: .5s;
+    scale: 1.3;
+}
+
+
+
+
+
+.form-FlashFood{
+    background-color: rgb(15,15,15) !important;
+    color: white !important;
+    border: 1px solid white;
+}
+
+.form-FlashFood input{
+    background-color: transparent !important;
+    color: white !important;
+    border: 1px solid white;
+    height: 40px !important;
+}
+
+#btn-realizar-pedido-tarjeta{
+    display: none;
+}
+
+#btn-realizar-pedido-indefinido {
+    display: none;
+    background-color: red !important;
+}
+
+/*Responsive Móvil*/
+@media screen and (max-width: 767px) {
+    .contenedor-enlaces{
+        display: block;
+        position: fixed;
+        background-color: rgb(15, 15, 15);
+        color: hsl(0, 0%, 60%);
+        flex-direction: column;
+        left: -100%;
+        top: 0;
+        width: 55%;
+        height: 100vh;
+        overflow: scroll;
+        z-index: 1001;
+        /*transition: all 0.3s;*/
+    }
+
+    .lista-enlaces{
+        flex-direction: column;
+        padding-left: 0px;
+        gap: 30px;
+    }
+
+    .log-Reg{
+        flex-direction: column;
+    }
+
+    .check-responsive{
+        display: block;
+    }
+
+    .cerrar{
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .caja-select{
+        position: relative;
+        top: 0;
+        width: 100%;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .lista-enlaces li {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        flex-direction: column;
+        width: 100%;
+        margin-left: 50px;
+    }
+
+    .log-Reg{
+        margin-top: 40px;
+    }
+
+    .con-a a{
+        margin: 10 !important;
+    }
+
+    #btn-register{
+        width: 80%;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contenedor-nav label{
+        width: auto;
+    }
+
+    .contenedor-nav a:hover,
+    .contenedor-nav .label:hover{
+        color: white;
+    }
+
+    .desktop{
+        display: none;
+    }
+    
+    .movil{
+        display: block;
+    }
+
+    div.menu-item{
+        width: 250px;
+    }
+
+    .footer-enlaces{
+        width: 100%;
+    }
+
+    .ft-titulo{
+        width: 100%;
+    }
+
+    .centrar .ft-titulo{
+        text-align: center;
+    }
+
+    .footer-enlaces #ul-ft-1,
+    .footer-enlaces #ul-ft-2{
+        display: none;
+        text-align: left;
+    }
+
+    footer.pie-pagina{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #titulo-menu{
+        font-size: 20px;
+    }
+
+    .contenedor-titulo-menu img{
+        width: 15px;
+    }
+
+    #caja3 {
+        left: -20px;
+    }
+
+    #caja4 {
+        left: -20px;
+    }
+}
+
+
+
+
+
