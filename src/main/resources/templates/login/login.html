@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout/componentes :: Fhead"></head>
+<body>
+  <header th:replace="layout/componentes :: Fheader"></header>
+
+  <!--Efecto de oscurecer pantalla (Móvil)-->
+  <div class="oscurecer" id="oscuro"></div>
+
+  <!-- /////////////CUERPO DE LA PÁGINA////////////////// -->
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-xl-4 col-md-6">
+        <div class="card">
+            <div class="card-header form-FlashFood">
+                Iniciar Sesión
+            </div>
+            <div class="card-body form-FlashFood">
+                <form method="" id="formulario-inicio">
+
+                    <input class="form-control mb-3" id="correo" type="text" placeholder="Correo" required name="correo" />
+                    <div id="mensaje-error-correo" class="form-group"></div>
+                    <input class="form-control mb-3" id="password" type="password" placeholder="Contraseña" required name="clave" />
+                    <div id="mensaje-error-password" class="form-group"></div>
+                    <div class="d-grid gap-2 mb-3">
+                        <button class="btn btn-primary" type="button">Iniciar Sesión</button>
+
+                    ¿No tienes una cuenta? <a href="">Registrate!</a>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  <!-- //////////////FIN DEL CUERPO DE LA PÁGINA//////////////// -->
+
+  <footer th:replace="layout/componentes :: Ffooter"></footer>
+  <div th:replace="layout/componentes :: Fscripts"></div>
+</body>
+</html>

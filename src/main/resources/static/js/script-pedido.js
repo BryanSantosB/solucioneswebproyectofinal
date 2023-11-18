@@ -139,8 +139,6 @@ btnRealizarPago.addEventListener("click", function () {
     }
 });
 
-
-
 //Mandar lista y método de pago
 const btnRealizarPedido = document.getElementById("btn-realizar-pedido");
 const btnRealizarPedidoT = document.getElementById("btn-realizar-pedido-tarjeta");
@@ -162,76 +160,13 @@ selectMetodoP.addEventListener('change', () => {
         btnRealiarPedidoIndefinido.style.display = 'block';
     }
 });
-btnRealizarPedido.addEventListener("click", realizarPedido);
+btnRealizarPedido.addEventListener("click", realizarPedidoT);
 btnRealizarPedidoT.addEventListener("click", realizarPedidoT);
-btnRealiarPedidoIndefinido.addEventListener('click', realizarPedido);
+btnRealiarPedidoIndefinido.addEventListener('click', realizarPedidoT);
 
-function realizarPedido() {
-    if (carritoItems.length > 0) {
-        const selectedMetodoP = selectMetodoP.value;
-        if (validarCampoDireccion()) {
-            if (selectedMetodoP !== null && selectedMetodoP !== "") {
-                if (selectedMetodoP != 1) {
-                    const data = {
-                        carritoItems: carritoItems,
-                        idMetodoPago: parseInt(selectedMetodoP),
-                        direccion: input_direccion.value
-                    };
-
-                    fetch("/pedidos/realizarpedido", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(data)
-                    }).then(response => {
-                        if (response.ok) {
-                            return response.text();
-                        } else {
-                            Swal.fire(
-                                `¡${data.datos.nombreTarjeta}, no se pudo realizar el pago!`,
-                                `La Tarjeta: ${data.datos.numeroTarjeta} no cuenta con el saldo suficiente`,
-                                'error'
-                            );
-                            return Promise.reject(response);
-                        }
-                    }).then(responseText => {
-                        console.log(responseText);
-                    }).catch(error => {
-                        console.error("Error al enviar datos al servidor:", error);
-                    });
-                    modal.hide();
-                    Swal.fire(
-                        '¡Pedido registrado!',
-                        `Total del pedido: S/${total}`,
-                        'success'
-                    ).then(() => {
-                        // Redirigir al usuario a la página deseada
-                        window.location.href = '/Home/RedireccionarAlIndex';
-                    });
-                } else {
-                    Swal.fire(
-                        'Método de pago aún no disponible',
-                        'Por favor seleccione otro medio de pago',
-                        'warning'
-                    );
-                }
-            } else {
-                Swal.fire(
-                    'Selecciona el método de pago',
-                    'Tarjeta o Contraentrega',
-                    'warning'
-                );
-            }
-        }
-        
-    }
-}
-
+//Próximamente a utilizar
 async function agregarcarritoDB() {
     
-    alert("xdxdxd")
-
     const pedidoCompleto = {
         metodopago: metodopagovalue,
         direccion: direccionvalue,
