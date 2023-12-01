@@ -69,7 +69,7 @@ async function agregarAlCarrito() {
         const res = await fetch(`/realizarpedido/agregarCarrito?id=${itemCarrito.IdProducto}&nombre=${itemCarrito.Nombre}&precio=${itemCarrito.Precio}&cantidad=${itemCarrito.Cantidad}`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
         })
 

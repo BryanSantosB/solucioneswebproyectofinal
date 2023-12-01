@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout/componentes :: Fhead"></head>
+<body>
+  <header th:replace="layout/componentes :: Fheader"></header>
+
+  <!--Efecto de oscurecer pantalla (Móvil)-->
+  <div class="oscurecer" id="oscuro"></div>
+
+  <!-- /////////////CUERPO DE LA PÁGINA////////////////// -->
+  
+  <div class="contenedor-detalle">
+      <div class="card fondofash">
+          <div class="card-header fondofash">
+              <h5>DETALLE DE LA ÚLTIMA COMPRA REALIZADA</h5>
+          </div>
+          <div class="card-body">
+            <p>INFORMACIÓN DEL PEDIDO:</p>
+            <p>Usuario: <span th:text="${ultimopedido.idUsuario.nombre}"></span></p>
+            <p>Correo: <span th:text="${ultimopedido.idUsuario.correo}"></span></p>
+            <p>Método de pago: <span th:text="${ultimopedido.metodoPago.forma_pago}"></span></p>
+            <p>Dirección: <span th:text="${ultimopedido.direccion}"></span></p>
+            <p>Fecha de compra: <span th:text="${ultimopedido.fecha_pedido}"></span></p>
+            <p>Costo total: <span th:text="${total}"></span></p>
+          </div>
+      </div>
+      <div class="card fondofash">
+        <div class="card-header fondofash">
+            Productos del pedido
+        </div>
+        <div class="card-body">
+            <div class="table-responsive fondofash">
+                <table class="table  tabla">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="item:${listadetallepedido}">
+                            <td th:text="${item.producto.categoria.nombre}"></td>
+                            <td th:text="${item.producto.nombre}"></td>
+                            <td th:text="${item.producto.precio}"></td>
+                            <td th:text="${item.cantidad}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <!-- //////////////FIN DEL CUERPO DE LA PÁGINA//////////////// -->
+
+  <footer th:replace="layout/componentes :: Ffooter"></footer>
+  <div th:replace="layout/componentes :: Fscripts"></div>
+</body>
+</html>

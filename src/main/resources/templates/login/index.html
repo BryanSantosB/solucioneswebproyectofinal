@@ -16,14 +16,13 @@
                 Iniciar Sesión
             </div>
             <div class="card-body form-FlashFood">
-                <form method="" id="formulario-inicio">
-
-                    <input class="form-control mb-3" id="correo" type="text" placeholder="Correo" required name="correo" />
+                <form th:action="@{/autenticar/}" method="post" id="formulario-inicio">
+                    <input class="form-control mb-3" id="username" name="username" type="text" placeholder="Correo" required/>
                     <div id="mensaje-error-correo" class="form-group"></div>
-                    <input class="form-control mb-3" id="password" type="password" placeholder="Contraseña" required name="clave" />
+                    <input class="form-control mb-3" id="password" name="password" type="password" placeholder="Contraseña" required/>
                     <div id="mensaje-error-password" class="form-group"></div>
                     <div class="d-grid gap-2 mb-3">
-                        <button class="btn btn-primary" type="button">Iniciar Sesión</button>
+                        <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
 
                     ¿No tienes una cuenta? <a href="">Registrate!</a>
 

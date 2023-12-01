@@ -5,6 +5,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,12 +18,14 @@ import proyecto.demo.Model.entidad.Carrito;
 import proyecto.demo.Model.entidad.DetallePedido;
 import proyecto.demo.Model.entidad.MetodoPago;
 import proyecto.demo.Model.entidad.Pedido;
+import proyecto.demo.Model.entidad.Usuario;
 import proyecto.demo.Model.service.ICarritoService;
 import proyecto.demo.Model.service.ICategoriaService;
 import proyecto.demo.Model.service.IDetallepedidoService;
 import proyecto.demo.Model.service.IMetodoPagoService;
 import proyecto.demo.Model.service.IPedidoService;
 import proyecto.demo.Model.service.IProductoService;
+import proyecto.demo.Model.service.UserService;
 
 @Controller
 @RequestMapping("/realizarpedido")
@@ -47,6 +51,9 @@ public class PedidoControler {
     @Autowired
     private IDetallepedidoService detallepedidoService;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping("/")
     public String realizarpedido(Model modelo){
         carritoService.limpiarCarrito();
@@ -56,6 +63,26 @@ public class PedidoControler {
         modelo.addAttribute("listaProductos", productoService.cargarProductos());
         modelo.addAttribute("listaMetodoPago", metodopagoService.cargarMetodoPago());
         return "pedido/realizarpedido";
+    }
+
+    @RequestMapping("/visualizarpedido")
+    public String visualizarpedido(Model modelo){
+        Authentication autenticacion = SecurityContextHolder.getContext().getAuthentication();
+        String nombre = autenticacion.getName();
+        Usuario usuario = userService.encontrarUsuarioPorNombre(nombre);
+        List<Pedido> listapedido = pedidoService.findLastPedidoByUsuario(usuario);
+        Pedido ultimopedido = listapedido.get(0);
+        List<DetallePedido> listadetallepedido = detallepedidoService.encontrarTodoPorPedido(ultimopedido);
+        double total = 0;
+        for (DetallePedido detallePedido : listadetallepedido) {
+            total += detallePedido.getProducto().getPrecio() * detallePedido.getCantidad();
+        }
+        modelo.addAttribute("usuario", usuario);
+        modelo.addAttribute("listapedido", listapedido);
+        modelo.addAttribute("ultimopedido", ultimopedido);
+        modelo.addAttribute("listadetallepedido", listadetallepedido);
+        modelo.addAttribute("total", total);
+        return "pedido/visualizarpedido";
     }
 
     @RequestMapping(value = "/agregarCarrito", method = RequestMethod.POST)
@@ -72,7 +99,10 @@ public class PedidoControler {
     @RequestMapping(value = "/completarpedido", method = RequestMethod.POST)
     public String completarPedido(@RequestParam String metodopago, @RequestParam String direccion) {
         Pedido pedido = new Pedido();
-        pedido.setIdUsuario(23);
+        Authentication autenticacion = SecurityContextHolder.getContext().getAuthentication();
+        String nombre = autenticacion.getName();
+        Usuario usuario = userService.encontrarUsuarioPorNombre(nombre);
+        pedido.setIdUsuario(usuario);
         pedido.setDireccion(direccion);
         MetodoPago metodoP = metodopagoService.obtenerMetodoPagoById(Long.parseLong(metodopago));
         pedido.setMetodoPago(metodoP);

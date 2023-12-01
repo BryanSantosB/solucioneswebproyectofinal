@@ -550,6 +550,51 @@ footer.pie-pagina{
     background-color: red !important;
 }
 
+div.contenedor-detalle{
+    width: 85%;
+    margin: auto;
+    color: white;
+}
+
+.fondofash{
+    background-color: rgb(15, 15, 15) !important;
+    color: white !important;
+    border-color: white !important;
+    margin: 15px auto;
+    width: 90% !important;
+}
+
+/*------------------------------------------------------------------------*/
+/*Tablas*/
+
+table.tabla {
+    border-radius: 15px 15px 0 0;
+    overflow: hidden;
+    background-color: transparent; 
+    /*background: #dfdfdf;*/
+    /*box-shadow: 8px 8px 16px #c6c6c6, -8px -8px 16px #f8f8f8;*/
+    margin: 40px auto;
+}
+
+table.tabla th {
+    border-bottom: 2px solid black;
+    background-color: #BA0D23!important;
+    color: white;
+}
+
+table.tabla tr {
+    border-bottom: 1px solid white;
+    background-color: transparent;
+    color: white;
+    
+}
+
+table.tabla tr:hover {
+    background-color: #ba0d23;
+    color: white;
+}
+
+
 /*Responsive Móvil*/
 @media screen and (max-width: 767px) {
     .contenedor-enlaces{

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout/componentes :: Fhead"></head>
+<body>
+  <header th:replace="layout/componentes :: Fheader"></header>
+
+  <!--Efecto de oscurecer pantalla (Móvil)-->
+  <div class="oscurecer" id="oscuro"></div>
+
+  <!-- /////////////CUERPO DE LA PÁGINA////////////////// -->
+
+  <div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-xl-4 col-md-6">
+            <div class="card">
+                <div class="card-header form-FlashFood">
+                    Regístrate
+                </div>
+                <div class="card-body form-FlashFood">
+                    <form th:action="@{/registrarusuario}" th:object="${usuario}" method="post" id="formulario-registrar">
+
+                        <input class="form-control mb-3" id="nombre" name="nombre" type="text" placeholder="Nombre" required />
+                        <div id="mensaje-error-nombre" class="form-group"></div>
+                        <input class="form-control mb-3" id="apellido" name="apellido" type="text" placeholder="Apellido" required />
+                        <div id="mensaje-error-apellido" class="form-group"></div>
+                        <!-- <input class="form-control mb-3" id="fecha_nacimiento" name="fecha_nacimiento" type="date" placeholder="Fecha de nacimiento" required />
+                        <div id="mensaje-error-fecha" class="form-group" min="1924-01-01" max="2010-12-31"></div> -->
+                        <input class="form-control mb-3" id="correo" name="correo" type="email" placeholder="Correo" required />
+                        <div id="mensaje-error-correo" class="form-group"></div>
+                        <input class="form-control mb-3" id="telefono" name="telefono" type="number" placeholder="Telefono" required />
+                        <div id="mensaje-error-telefono" class="form-group"></div>
+                        <input class="form-control mb-3" id="password" name="password" type="password" placeholder="Contraseña" required />
+                        <div id="mensaje-error-password" class="form-group"></div>
+                        <div class="d-grid gap-2 mb-3">
+                            <button class="btn btn-primary" type="submit">Regístrate</button>
+                        </div>
+                            
+                        ¿Ya tienes una cuenta? <a href="">Iniciar Sesion</a>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  <!-- //////////////FIN DEL CUERPO DE LA PÁGINA//////////////// -->
+
+  <footer th:replace="layout/componentes :: Ffooter"></footer>
+  <div th:replace="layout/componentes :: Fscripts"></div>
+</body>
+</html>
